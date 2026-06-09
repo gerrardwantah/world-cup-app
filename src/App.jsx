@@ -4,7 +4,11 @@ function App() {
   const [fixtures, setFixtures] = useState([])
 
   useEffect(() => {
-    fetch('/api/matches')
+    const url = import.meta.env.DEV 
+      ? 'https://world-cup-app-nine.vercel.app/api/matches'
+      : '/api/matches'
+      
+    fetch(url)
       .then(res => res.json())
       .then(data => {
         setFixtures(data.matches)
