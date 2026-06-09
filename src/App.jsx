@@ -16,7 +16,7 @@ function App() {
       <h1>World Cup 2026</h1>
       {fixtures.map(match => (
         <div key={match.id}>
-          <p>{new Date(match.utcDate).toLocaleDateString()}</p>
+          <p>{new Date(match.utcDate).toLocaleDateString()} {new Date(match.utcDate).toLocaleTimeString()}</p>
           <p>
             {match.homeTeam.name} vs {match.awayTeam.name}
           </p>
