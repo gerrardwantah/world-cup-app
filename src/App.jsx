@@ -4,14 +4,9 @@ function App() {
   const [fixtures, setFixtures] = useState([])
 
   useEffect(() => {
-    fetch('https://api.football-data.org/v4/competitions/WC/matches', {
-      headers: {
-        'X-Auth-Token': import.meta.env.VITE_FOOTBALL_API_KEY
-      }
-    })
+    fetch('/api/matches')
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         setFixtures(data.matches)
       })
   }, [])
@@ -19,7 +14,13 @@ function App() {
   return (
     <div>
       <h1>World Cup App</h1>
-      <p>Check the console for data!</p>
+      {fixtures.map(match => (
+        <div key={match.id}>
+          <p>
+            {match.homeTeam.name} vs {match.awayTeam.name}
+          </p>
+        </div>
+      ))}
     </div>
   )
 }
