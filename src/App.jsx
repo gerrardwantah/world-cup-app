@@ -12,15 +12,17 @@ function App() {
   }, [])
 
   return (
-    <div>
-      <h1>World Cup 2026</h1>
+    <div className="bg-gray-900 min-h-screen p-8">
+      <h1 className="text-white text-4xl font-bold mb-8">World Cup 2026</h1>
       {fixtures.map(match => (
-        <div key={match.id}>
-          <p>{new Date(match.utcDate).toLocaleDateString()} {new Date(match.utcDate).toLocaleTimeString()}</p>
-          <p>
+        <div key={match.id} className="bg-white rounded-lg p-4 mb-4">
+          <p className="text-gray-500 text-sm">
+            {new Date(match.utcDate).toLocaleDateString()} {new Date(match.utcDate).toLocaleTimeString()}
+          </p>
+          <p className="text-xl font-bold my-2">
             {match.homeTeam.name} vs {match.awayTeam.name}
           </p>
-          <p>{match.status}</p>
+          <p className="text-sm text-blue-500">{match.status}</p>
         </div>
       ))}
     </div>
